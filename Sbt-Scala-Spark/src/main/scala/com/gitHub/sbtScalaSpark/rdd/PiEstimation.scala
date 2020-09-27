@@ -2,6 +2,16 @@ package com.gitHub.sbtScalaSpark.rdd
 
 import org.apache.spark.{SparkConf, SparkContext}
 
+/*
+TODO
+RDD
+dataframe
+README
+streaming
+build.sbt cleadn
+create jar
+ */
+
 object PiEstimation {
   def main(args: Array[String]) = {
     val conf = new SparkConf().setAppName("Pi estimation").setMaster("local[*]")
