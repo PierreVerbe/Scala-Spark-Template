@@ -4,8 +4,6 @@ import org.apache.spark.{SparkConf, SparkContext}
 
 /*
 TODO
-RDD
-dataframe
 README
 streaming
 build.sbt cleadn
