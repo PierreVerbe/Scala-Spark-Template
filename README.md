@@ -7,6 +7,8 @@
 * Install Maven <br>
 * Install Simple Build Tool (SBT) <br>
 
+## Install Apache Spark 3.0.1
+
 ## Installation
 * First clone this project
 ```bash
