@@ -2,9 +2,9 @@ package com.gitHub.sbtScalaSpark.rdd
 
 import org.apache.spark.{SparkConf, SparkContext}
 
-object WordCount {
+object WordCountRDD {
   def main(args: Array[String]) = {
-    val conf = new SparkConf().setAppName("Word Count").setMaster("local[*]")
+    val conf = new SparkConf().setAppName("Word Count RDD").setMaster("local[*]")
     val sc = new SparkContext(conf)
 
     val textFile = sc.textFile("src/main/resources/LoremIpsum.txt")
