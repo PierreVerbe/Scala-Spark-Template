@@ -19,6 +19,17 @@ git clone https://github.com/PierreVerbe/Template-Scala-Spark
 	* Maven-Scala-Spark
 	* Sbt-Scala-Spark
 	
+## Create Jar
+* Maven-Scala-Spark
+```bash
+
+```
+
+* Sbt-Scala-Spark project
+```bash
+sbt package
+```
+	
 ## Apache Spark UI
 * Accessible localhost:4040
 
