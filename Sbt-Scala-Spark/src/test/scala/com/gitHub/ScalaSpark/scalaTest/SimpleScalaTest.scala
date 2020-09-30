@@ -4,7 +4,7 @@ import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll}
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-class SimpleTest extends AnyFunSuite with Matchers with BeforeAndAfterAll with BeforeAndAfter{
+class SimpleScalaTest extends AnyFunSuite with Matchers with BeforeAndAfterAll with BeforeAndAfter{
 
   override def beforeAll(): Unit = {
     println("Start of the test : Simple test")
