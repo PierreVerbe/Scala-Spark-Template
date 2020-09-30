@@ -13,3 +13,10 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.2" % Test
 
 // Scalacheck
 libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.14.3" % Test
+
+/*
+Spark Testing Base -> 3.0.0 not accessible
+wiki : https://github.com/holdenk/spark-testing-base/wiki
+*/
+libraryDependencies += "com.holdenkarau" %% "spark-testing-base" % "2.4.5_0.14.0" % Test
+
