@@ -10,3 +10,6 @@ libraryDependencies += "org.apache.spark" %% "spark-streaming" % "3.0.1" % "prov
 
 // Scalatest
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.2" % Test
+
+// Scalacheck
+libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.14.3" % Test
