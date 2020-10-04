@@ -20,3 +20,8 @@ Spark Testing Base -> 3.0.0 not accessible
 wiki : https://github.com/holdenk/spark-testing-base/wiki
 */
 libraryDependencies += "com.holdenkarau" %% "spark-testing-base" % "2.4.5_0.14.0" % Test
+
+
+// https://mvnrepository.com/artifact/com.storm-enroute/scalameter
+libraryDependencies += "com.storm-enroute" %% "scalameter" % "0.19" % Test
+

@@ -34,6 +34,8 @@ sbt package
 * Accessible localhost:4040
 
 ## Notes
+* Don't forget to check "Include dependencies with "Provided" Scope" to run code
+
 * Apache Maven <br>
 	Site : https://maven.apache.org/
 	
@@ -42,3 +44,9 @@ sbt package
 
 * Apache Spark Website <br>
     Site : https://spark.apache.org/
+	
+## TODO
+dataset
+streaming
+build.sbt cleadn
+Spark Testing base
