@@ -1,27 +1,64 @@
-name := "Sbt-Scala-Spark"
-version := "1.0"
+ThisBuild / name := "Sbt-Scala-Spark"
+ThisBuild / organization := "com.gitHub"
+ThisBuild / version := "1.0"
 
-scalaVersion := "2.12.8"
+ThisBuild / scalaVersion := "2.12.8"
 
-// Apache Spark dependencies
-libraryDependencies += "org.apache.spark" %% "spark-core" % "3.0.0" % "provided"
-libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.0.0" % "provided"
-libraryDependencies += "org.apache.spark" %% "spark-streaming" % "3.0.0" % "provided"
-libraryDependencies += "org.apache.spark" %% "spark-hive" % "3.0.0" % "provided"
+// Properties build
+val sparkVersion = "3.0.0"
+val scalaTestVersion = "3.2.2"
+val scalaCheckVersion = "1.14.3"
+val scalaMeterVersion = "0.19"
 
-// Scalatest
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.2" % Test
+// Apache Spark
+val sparkCore = "org.apache.spark" %% "spark-core" % sparkVersion
+val sparkSQl = "org.apache.spark" %% "spark-sql" % sparkVersion
+val sparkStreaming = "org.apache.spark" %% "spark-streaming" % sparkVersion
+val sparkHive = "org.apache.spark" %% "spark-hive" % sparkVersion
 
-// Scalacheck
-libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.14.3" % Test
+// Tests
+val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion
+val scalaCheck = "org.scalacheck" %% "scalacheck" % scalaCheckVersion
+val sparkTestingBase = "com.holdenkarau" %% "spark-testing-base" % "2.4.5_0.14.0" // Wiki : https://github.com/holdenk/spark-testing-base/wiki , Spark Testing Base -> 3.0.0 does not exist
+
+// Benchmarks
+val scalaMeter = "com.storm-enroute" %% "scalameter" % scalaMeterVersion
+
 
 /*
-Spark Testing Base -> 3.0.0 not accessible
-wiki : https://github.com/holdenk/spark-testing-base/wiki
-*/
-libraryDependencies += "com.holdenkarau" %% "spark-testing-base" % "2.4.5_0.14.0" % Test
+// Create subproject
+lazy val benchmarking = (project in file("."))
+  .aggregate(core)
+  .dependsOn(core)
+  .settings(
 
+    name := "benchmarking",
 
-// https://mvnrepository.com/artifact/com.storm-enroute/scalameter
-libraryDependencies += "com.storm-enroute" %% "scalameter" % "0.19" % Test
+  )
 
+ */
+
+lazy val root = (project in file("."))
+  .settings(
+    name := "Root Project",
+    libraryDependencies ++= Seq(sparkCore % Provided,
+      sparkSQl % Provided,
+      sparkStreaming % Provided,
+      sparkHive% Provided),
+    libraryDependencies += sparkTestingBase % Test,
+
+    libraryDependencies += scalaTest % Test,
+    libraryDependencies += scalaCheck % Test,
+
+    libraryDependencies += scalaMeter % Test
+  )
+
+/**
+ * Broadcasting : (.aggreagate(...))
+ * Run command on "main" will run also benchmarking
+ */
+
+/**
+ * Depend on : (.dependsOn(...))
+ * To add a dependency on other subprojects
+ */
