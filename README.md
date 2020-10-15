@@ -46,7 +46,6 @@ sbt package
     Site : https://spark.apache.org/
 	
 ## TODO
-dataset
 streaming
 build.sbt cleadn
 Spark Testing base

@@ -2,6 +2,7 @@ package com.gitHub.ScalaSpark.sparkTestingBase
 
 import com.holdenkarau.spark.testing.{RDDComparisons, SharedSparkContext}
 import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.Assertions.AssertionsHelper
 
 class RDDComparisonTest extends AnyFunSuite with SharedSparkContext with RDDComparisons {
 
@@ -14,6 +15,6 @@ class RDDComparisonTest extends AnyFunSuite with SharedSparkContext with RDDComp
 
     assertRDDEquals(expectedRDD, resultRDD) // succeed
     //assertRDDEqualsWithOrder(expectedRDD, resultRDD) // Fail
-  }
 
+  }
 }
