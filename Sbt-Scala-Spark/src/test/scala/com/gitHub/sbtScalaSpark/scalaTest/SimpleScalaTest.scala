@@ -1,10 +1,8 @@
-package com.gitHub.ScalaSpark.scalaTest
+package com.gitHub.sbtScalaSpark.scalaTest
 
-import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll}
-import org.scalatest.funsuite.AnyFunSuite
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, FunSuite, Matchers}
 
-class SimpleScalaTest extends AnyFunSuite with Matchers with BeforeAndAfterAll with BeforeAndAfter{
+class SimpleScalaTest extends FunSuite with Matchers with BeforeAndAfterAll with BeforeAndAfter{
 
   override def beforeAll(): Unit = {
     println("Start of the test : Simple test")

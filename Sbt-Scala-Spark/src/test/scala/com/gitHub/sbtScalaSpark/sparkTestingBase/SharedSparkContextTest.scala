@@ -1,9 +1,9 @@
-package com.gitHub.ScalaSpark.sparkTestingBase
+package com.gitHub.sbtScalaSpark.sparkTestingBase
 
 import com.holdenkarau.spark.testing.SharedSparkContext
-import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.FunSuite
 
-class SampleTest extends AnyFunSuite with SharedSparkContext{
+class SharedSparkContextTest extends FunSuite with SharedSparkContext{
   test("test initializing spark context") {
     val list = List(1, 2, 3, 4)
     val rdd = sc.parallelize(list)

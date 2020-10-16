@@ -1,4 +1,4 @@
-package com.gitHub.ScalaSpark.scalaCheck
+package com.gitHub.sbtScalaSpark.scalaCheck
 
 import org.scalacheck.Properties
 import org.scalacheck.Prop.forAll

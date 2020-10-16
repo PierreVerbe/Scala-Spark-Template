@@ -1,4 +1,4 @@
-package com.gitHub.ScalaSpark.scalaMeter
+package com.gitHub.sbtScalaSpark.scalaMeter
 
 import org.scalameter.api._
 

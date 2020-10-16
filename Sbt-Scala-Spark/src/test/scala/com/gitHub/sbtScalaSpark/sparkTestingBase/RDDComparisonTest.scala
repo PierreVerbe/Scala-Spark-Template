@@ -1,19 +1,18 @@
-package com.gitHub.ScalaSpark.sparkTestingBase
+package com.gitHub.sbtScalaSpark.sparkTestingBase
 
 import com.holdenkarau.spark.testing.{RDDComparisons, SharedSparkContext}
-import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.FunSuite
 
-class RDDComparisonTest extends AnyFunSuite with SharedSparkContext with RDDComparisons {
+class RDDComparisonTest extends FunSuite with SharedSparkContext with RDDComparisons {
 
   test("test RDDComparisons") {
     val expectedRDD = sc.parallelize(Seq(1, 2, 3))
     val resultRDD = sc.parallelize(Seq(3, 2, 1))
 
     assert(None === compareRDD(expectedRDD, resultRDD)) // succeed
-    //assert(None === compareRDDWithOrder(expectedRDD, resultRDD)) // Fail
+    assert(None === compareRDDWithOrder(expectedRDD, resultRDD)) // Fail
 
     assertRDDEquals(expectedRDD, resultRDD) // succeed
-    //assertRDDEqualsWithOrder(expectedRDD, resultRDD) // Fail
+    assertRDDEqualsWithOrder(expectedRDD, resultRDD) // Fail
   }
-
 }

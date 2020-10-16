@@ -5,10 +5,11 @@ ThisBuild / version := "1.0"
 ThisBuild / scalaVersion := "2.12.8"
 
 // Properties build
-val sparkVersion = "3.0.0"
-val scalaTestVersion = "3.2.2"
+val sparkVersion = "2.4.5"
+val scalaTestVersion = "3.0.8"
 val scalaCheckVersion = "1.14.3"
 val scalaMeterVersion = "0.19"
+val sparkTestingBaseVersion = sparkVersion + "_0.14.0"
 
 // Apache Spark
 val sparkCore = "org.apache.spark" %% "spark-core" % sparkVersion
@@ -19,26 +20,20 @@ val sparkHive = "org.apache.spark" %% "spark-hive" % sparkVersion
 // Tests
 val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion
 val scalaCheck = "org.scalacheck" %% "scalacheck" % scalaCheckVersion
-val sparkTestingBase = "com.holdenkarau" %% "spark-testing-base" % "2.4.5_0.14.0" // Wiki : https://github.com/holdenk/spark-testing-base/wiki , Spark Testing Base -> 3.0.0 does not exist
+val sparkTestingBase = "com.holdenkarau" %% "spark-testing-base" % sparkTestingBaseVersion // Wiki : https://github.com/holdenk/spark-testing-base/wiki , Spark Testing Base -> 3.0.0 does not exist
 
 // Benchmarks
 val scalaMeter = "com.storm-enroute" %% "scalameter" % scalaMeterVersion
 
-
-/*
 // Create subproject
-lazy val benchmarking = (project in file("."))
-  .aggregate(core)
-  .dependsOn(core)
+lazy val sub = (project in file("Hello-Sub"))
   .settings(
-
-    name := "benchmarking",
-
+    name := "Hello sub project"
   )
 
- */
-
 lazy val root = (project in file("."))
+  .aggregate(sub)
+  .dependsOn(sub)
   .settings(
     name := "Root Project",
     libraryDependencies ++= Seq(sparkCore % Provided,
@@ -55,7 +50,7 @@ lazy val root = (project in file("."))
 
 /**
  * Broadcasting : (.aggreagate(...))
- * Run command on "main" will run also benchmarking
+ * Run command on root will run also on subs
  */
 
 /**
