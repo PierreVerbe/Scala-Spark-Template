@@ -5,11 +5,11 @@ ThisBuild / version := "1.0"
 ThisBuild / scalaVersion := "2.12.8"
 
 // Properties build
-val sparkVersion = "2.4.5"
-val scalaTestVersion = "3.0.8"
-val scalaCheckVersion = "1.14.3"
-val scalaMeterVersion = "0.19"
-val sparkTestingBaseVersion = sparkVersion + "_0.14.0"
+lazy val sparkVersion = "2.4.5"
+lazy val scalaTestVersion = "3.0.8"
+lazy val scalaCheckVersion = "1.14.3"
+lazy val scalaMeterVersion = "0.19"
+lazy val sparkTestingBaseVersion = sparkVersion + "_0.14.0"
 
 // Apache Spark
 val sparkCore = "org.apache.spark" %% "spark-core" % sparkVersion

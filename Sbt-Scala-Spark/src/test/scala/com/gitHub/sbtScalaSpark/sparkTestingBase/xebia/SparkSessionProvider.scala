@@ -9,4 +9,3 @@ trait SparkSessionProvider {
     .master("local[*]")
     .getOrCreate()
 }
-
