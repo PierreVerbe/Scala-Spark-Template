@@ -25,35 +25,33 @@ val sparkTestingBase = "com.holdenkarau" %% "spark-testing-base" % sparkTestingB
 // Benchmarks
 val scalaMeter = "com.storm-enroute" %% "scalameter" % scalaMeterVersion
 
-// Create subproject
+lazy val commonSettings = Seq(
+  libraryDependencies ++= Seq(sparkCore % Provided,
+    sparkSQl % Provided,
+    sparkStreaming % Provided,
+    sparkHive% Provided),
+  libraryDependencies += sparkTestingBase % Test,
+
+  libraryDependencies += scalaTest % Test,
+  libraryDependencies += scalaCheck % Test,
+
+  libraryDependencies += scalaMeter % Test
+)
+
+lazy val root = (project in file("."))
+  .settings(
+    name := "Root Project"
+  )
+
+// Spark sub project
+lazy val sparkProject = (project in file("Spark-Sub"))
+  .settings(commonSettings : _*)
+  .settings(
+    name := "Spark sub project"
+  )
+
+// Hello sub project
 lazy val sub = (project in file("Hello-Sub"))
   .settings(
     name := "Hello sub project"
   )
-
-lazy val root = (project in file("."))
-  .aggregate(sub)
-  .dependsOn(sub)
-  .settings(
-    name := "Root Project",
-    libraryDependencies ++= Seq(sparkCore % Provided,
-      sparkSQl % Provided,
-      sparkStreaming % Provided,
-      sparkHive% Provided),
-    libraryDependencies += sparkTestingBase % Test,
-
-    libraryDependencies += scalaTest % Test,
-    libraryDependencies += scalaCheck % Test,
-
-    libraryDependencies += scalaMeter % Test
-  )
-
-/**
- * Broadcasting : (.aggreagate(...))
- * Run command on root will run also on subs
- */
-
-/**
- * Depend on : (.dependsOn(...))
- * To add a dependency on other subprojects
- */
