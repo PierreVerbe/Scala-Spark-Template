@@ -4,7 +4,6 @@ import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object WordCountDS {
-
   def main(args: Array[String]) = {
 
     // Create a local StreamingContext with two working thread and batch interval of 10 seconds.

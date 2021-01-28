@@ -8,8 +8,10 @@
     <artifactId>Maven-Scala-Spark</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>Hello-Sub</module>
+        <module>Spark-Sub</module>
     </modules>
 
     <properties>
@@ -23,83 +25,85 @@
         <spark-testing-base.version>0.14.0</spark-testing-base.version>
     </properties>
 
-    <dependencies>
+    <dependencyManagement>
 
-        <!-- Scala language -->
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>${scala.version}</version>
-        </dependency>
+        <dependencies>
+            <!-- Scala language -->
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-reflect</artifactId>
-            <version>${scala.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-reflect</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
 
-        <!-- Apache Spark -->
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_${scala.binary.version}</artifactId>
-            <version>${spark.version}</version>
-            <scope>provided</scope>
-        </dependency>
+            <!-- Apache Spark -->
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-core_${scala.binary.version}</artifactId>
+                <version>${spark.version}</version>
+                <scope>provided</scope>
+            </dependency>
 
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_${scala.binary.version}</artifactId>
-            <version>${spark.version}</version>
-            <scope>provided</scope>
-        </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-sql_${scala.binary.version}</artifactId>
+                <version>${spark.version}</version>
+                <scope>provided</scope>
+            </dependency>
 
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming_${scala.binary.version}</artifactId>
-            <version>${spark.version}</version>
-            <scope>provided</scope>
-        </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-streaming_${scala.binary.version}</artifactId>
+                <version>${spark.version}</version>
+                <scope>provided</scope>
+            </dependency>
 
-        <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-hive_${scala.binary.version}</artifactId>
-            <version>${spark.version}</version>
-            <scope>provided</scope>
-        </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-hive_${scala.binary.version}</artifactId>
+                <version>${spark.version}</version>
+                <scope>provided</scope>
+            </dependency>
 
-        <!-- ScalaTest-->
-        <dependency>
-            <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_${scala.binary.version}</artifactId>
-            <version>${scalatest.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <!-- ScalaTest-->
+            <dependency>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest_${scala.binary.version}</artifactId>
+                <version>${scalatest.version}</version>
+                <scope>test</scope>
+            </dependency>
 
-        <!-- ScalaCheck-->
-        <dependency>
-            <groupId>org.scalacheck</groupId>
-            <artifactId>scalacheck_${scala.binary.version}</artifactId>
-            <version>${scalacheck.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <!-- ScalaCheck-->
+            <dependency>
+                <groupId>org.scalacheck</groupId>
+                <artifactId>scalacheck_${scala.binary.version}</artifactId>
+                <version>${scalacheck.version}</version>
+                <scope>test</scope>
+            </dependency>
 
-        <!-- ScalaMeter -->
-        <dependency>
-            <groupId>com.storm-enroute</groupId>
-            <artifactId>scalameter_${scala.binary.version}</artifactId>
-            <version>${scalameter.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <!-- ScalaMeter -->
+            <dependency>
+                <groupId>com.storm-enroute</groupId>
+                <artifactId>scalameter_${scala.binary.version}</artifactId>
+                <version>${scalameter.version}</version>
+                <scope>test</scope>
+            </dependency>
 
-        <!-- Spark Testing Base -->
-        <dependency>
-            <groupId>com.holdenkarau</groupId>
-            <artifactId>spark-testing-base_${scala.binary.version}</artifactId>
-            <version>${spark.version}_${spark-testing-base.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <!-- Spark Testing Base -->
+            <dependency>
+                <groupId>com.holdenkarau</groupId>
+                <artifactId>spark-testing-base_${scala.binary.version}</artifactId>
+                <version>${spark.version}_${spark-testing-base.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
 
-    </dependencies>
+    </dependencyManagement>
 
     <build>
         <sourceDirectory>src/main/scala</sourceDirectory>

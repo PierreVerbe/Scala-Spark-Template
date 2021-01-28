@@ -1,7 +1,5 @@
 package com.gitHub.mavenScalaSpark.dataFrame
 
-package com.gitHub.sbtScalaSpark.dataFrame
-
 import org.apache.spark.sql.SparkSession
 
 object AirportDF {
@@ -14,7 +12,7 @@ object AirportDF {
 
     import sparkSession.implicits._
 
-    val df = sparkSession.read.option("header", "true").csv("src/main/resources/AirportRunways.csv")
+    val df = sparkSession.read.option("header", "true").csv("Spark-Sub/src/main/resources/AirportRunways.csv")
 
     df.printSchema()
     df.show()
