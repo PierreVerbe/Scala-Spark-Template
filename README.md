@@ -22,12 +22,12 @@ git clone https://github.com/PierreVerbe/Template-Scala-Spark
 ## Create Jar
 * Maven-Scala-Spark
 ```bash
-
+mvn clean package
 ```
 
 * Sbt-Scala-Spark project
 ```bash
-sbt package
+sbt clean package
 ```
 	
 ## Apache Spark UI
