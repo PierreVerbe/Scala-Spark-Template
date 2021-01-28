@@ -44,8 +44,3 @@ sbt package
 
 * Apache Spark Website <br>
     Site : https://spark.apache.org/
-	
-## TODO
-streaming
-build.sbt cleadn
-Spark Testing base
