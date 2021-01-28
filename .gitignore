@@ -1,13 +1,11 @@
 # IDE
 *.idea
+*.vscode
+*.metals
 
 # Binary files
 Sbt-Scala-Spark/project
 */target
-
-
-
-
 
 # Created by https://www.toptal.com/developers/gitignore/api/intellij,sbt,maven,spark,scala
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij,sbt,maven,spark,scala
