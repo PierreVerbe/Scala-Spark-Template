@@ -2,10 +2,10 @@ ThisBuild / name := "Sbt-Scala-Spark"
 ThisBuild / organization := "com.gitHub"
 ThisBuild / version := "1.0"
 
-ThisBuild / scalaVersion := "2.12.8"
+ThisBuild / scalaVersion := "2.11.8"
 
 // Properties build
-lazy val sparkVersion = "2.4.5"
+lazy val sparkVersion = "2.2.0"
 lazy val scalaTestVersion = "3.0.8"
 lazy val scalaCheckVersion = "1.14.3"
 lazy val scalaMeterVersion = "0.19"
