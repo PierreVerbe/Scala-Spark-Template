@@ -1,4 +1,4 @@
-# Template-Scala-Spark
+# Scala-Spark-Template
 
 ## About this repository
 
