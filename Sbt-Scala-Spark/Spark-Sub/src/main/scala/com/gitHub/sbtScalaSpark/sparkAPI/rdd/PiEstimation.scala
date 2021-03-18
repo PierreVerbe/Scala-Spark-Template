@@ -1,4 +1,4 @@
-package com.gitHub.sbtScalaSpark.rdd
+package com.gitHub.sbtScalaSpark.sparkAPI.rdd
 
 import org.apache.spark.{SparkConf, SparkContext}
 

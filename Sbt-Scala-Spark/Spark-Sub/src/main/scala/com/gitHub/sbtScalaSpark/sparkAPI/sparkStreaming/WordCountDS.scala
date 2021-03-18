@@ -1,4 +1,4 @@
-package com.gitHub.sbtScalaSpark.sparkStreaming
+package com.gitHub.sbtScalaSpark.sparkAPI.sparkStreaming
 
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}

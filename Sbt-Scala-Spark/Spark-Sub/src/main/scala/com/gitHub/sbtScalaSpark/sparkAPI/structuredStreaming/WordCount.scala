@@ -1,4 +1,4 @@
-package com.gitHub.sbtScalaSpark.structuredStreaming
+package com.gitHub.sbtScalaSpark.sparkAPI.structuredStreaming
 
 import org.apache.spark.sql.SparkSession
 

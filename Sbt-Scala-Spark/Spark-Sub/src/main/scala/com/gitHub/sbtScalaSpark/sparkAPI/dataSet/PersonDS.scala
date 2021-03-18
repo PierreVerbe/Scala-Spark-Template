@@ -1,4 +1,4 @@
-package com.gitHub.sbtScalaSpark.dataSet
+package com.gitHub.sbtScalaSpark.sparkAPI.dataSet
 
 import org.apache.spark.sql.SparkSession
 
@@ -8,7 +8,7 @@ object PersonDS {
   def main(args: Array[String]) = {
     val sparkSession = SparkSession
       .builder()
-      .appName("Airport Runways")
+      .appName("Persons")
       .master("local[*]")
       .getOrCreate()
 
