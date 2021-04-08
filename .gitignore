@@ -1,3 +1,6 @@
+### Project ###
+Sbt-Scala-Spark/Spark-Sub/src/test/resources/dataset
+
 ### Visual Code ###
 *.vscode
 
@@ -38,7 +41,7 @@ lib_managed/
 src_managed/
 project/boot/
 project/plugins/project/
-Sbt-Scala-Spark/project/target
+Sbt-Scala-Spark/project/target/
 .history
 .cache
 .lib/
