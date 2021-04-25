@@ -7,6 +7,12 @@
 * Install Maven <br>
 * Install Simple Build Tool (SBT) <br>
 
+## Technical stack
+* Scala 2.11.8 <br>
+* Spark 3.0.1 <br>
+* Testing : ScalaTest, ScalaCheck, Spark-Testing-Base, Cucumber <br>
+* Benchmarking : ScalaMeter <br>
+
 ## Install Apache Spark 3.0.1
 
 ## Installation
@@ -16,8 +22,8 @@ git clone https://github.com/PierreVerbe/Template-Scala-Spark
 ```
 
 * Choose one of the 2 folders
+	* Sbt-Scala-Spark (Most avanced one)
 	* Maven-Scala-Spark
-	* Sbt-Scala-Spark
 	
 ## Create Jar
 * Maven-Scala-Spark
@@ -34,8 +40,6 @@ sbt clean package
 * Accessible localhost:4040
 
 ## Notes
-* Don't forget to check "Include dependencies with "Provided" Scope" to run code
-
 * Apache Maven <br>
 	Site : https://maven.apache.org/
 	
@@ -44,3 +48,5 @@ sbt clean package
 
 * Apache Spark Website <br>
     Site : https://spark.apache.org/
+	
+* If you have issues look at this [file](resources/ISSUE.md) <br>
