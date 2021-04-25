@@ -1,8 +1,8 @@
 package com.gitHub.sbtScalaSpark.integration.business
 
-import au.com.bytecode.opencsv.CSVWriter
 import com.gitHub.sbtScalaSpark.Main
 import com.gitHub.sbtScalaSpark.integration.business.CucumberTool.getListOfFilesAndDirectory
+import com.opencsv.CSVWriter
 import io.cucumber.datatable.DataTable
 import io.cucumber.scala.{EN, ScalaDsl, Scenario}
 import org.scalatest.{Matchers, Suite}
