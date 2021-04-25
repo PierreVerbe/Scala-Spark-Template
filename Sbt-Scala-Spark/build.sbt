@@ -11,12 +11,16 @@ lazy val scalaCheckVersion = "1.14.3"
 lazy val scalaMeterVersion = "0.19"
 lazy val sparkTestingBaseVersion = sparkVersion + "_0.14.0"
 lazy val cucumberVersion = "6.10.1"
+lazy val opencsvVersion = "5.4"
 
 // Apache Spark
 val sparkCore = "org.apache.spark" %% "spark-core" % sparkVersion
 val sparkSQl = "org.apache.spark" %% "spark-sql" % sparkVersion
 val sparkStreaming = "org.apache.spark" %% "spark-streaming" % sparkVersion
 val sparkHive = "org.apache.spark" %% "spark-hive" % sparkVersion
+
+// Opencsv
+val opencsv = "com.opencsv" % "opencsv" % opencsvVersion
 
 // Tests
 val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion
@@ -37,6 +41,8 @@ lazy val commonSettings = Seq(
   libraryDependencies += scalaTest % Test,
   libraryDependencies += scalaCheck % Test,
   libraryDependencies += cucumber % Test,
+
+  libraryDependencies += opencsv,
 
   libraryDependencies += scalaMeter % Test
 )

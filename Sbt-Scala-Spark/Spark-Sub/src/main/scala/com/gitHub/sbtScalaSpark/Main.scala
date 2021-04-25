@@ -1,6 +1,6 @@
 package com.gitHub.sbtScalaSpark
 
-import com.gitHub.sbtScalaSpark.sparkAPI.dataSet.PersonDS.Person
+import com.gitHub.sbtScalaSpark.business.Analyser
 import com.gitHub.sbtScalaSpark.sparkInit.SparkSessionProvider
 import org.apache.spark.sql.SaveMode
 
@@ -12,23 +12,17 @@ object Main {
 
     val sparkSessionProvider = new SparkSessionProvider()
     implicit val sparkSession = sparkSessionProvider()
-    import sparkSession.implicits._
 
-    println(pathInputDataset)
-    println(pathOutputDataset)
+    val inputDf = sparkSession.read.option("header", "true").csv(pathInputDataset)
+    inputDf.printSchema()
+    inputDf.show()
 
-    val df = sparkSession.read.option("header", "true").csv(pathInputDataset)
-    df.show
-
-    val personSeq = Seq(Person("bobe", 22), Person("John", 32), Person("Mary", 31), Person("Fred", 42), Person("Lea", 8), Person("Elsa", 40))
-    val personRdd = sparkSession.sparkContext.parallelize(personSeq)
-    val personDf = personRdd.toDF()
-    val personDs = personDf.as[Person]
-
-    personDs.printSchema()
-    personDs.show()
+    val df = Analyser.removePeopleUnder18(inputDf)
+    df.printSchema()
+    df.show()
 
     df.coalesce(1).write.format("csv").option("header", "true").mode(SaveMode.Overwrite).save(pathOutputDataset)
+    sparkSession.close()
   }
 
 }

@@ -1,5 +1,6 @@
 ### Project ###
-Sbt-Scala-Spark/Spark-Sub/src/test/resources/dataset
+Sbt-Scala-Spark/Spark-Sub/src/test/resources/integration/dataset/input/*
+Sbt-Scala-Spark/Spark-Sub/src/test/resources/integration/dataset/output/*
 
 ### Macintosh ###
 .DS_Store

@@ -2,15 +2,17 @@ package com.gitHub.sbtScalaSpark.integration.business
 
 import au.com.bytecode.opencsv.CSVWriter
 import com.gitHub.sbtScalaSpark.Main
+import com.gitHub.sbtScalaSpark.integration.business.CucumberTool.getListOfFilesAndDirectory
 import io.cucumber.datatable.DataTable
-import io.cucumber.scala.{EN, ScalaDsl}
-import org.scalatest.{BeforeAndAfterAll, Matchers, Suite}
+import io.cucumber.scala.{EN, ScalaDsl, Scenario}
+import org.scalatest.{Matchers, Suite}
 
 import java.io.{BufferedWriter, FileWriter}
 import scala.collection.JavaConverters._
 import scala.jdk.CollectionConverters.asScalaBufferConverter
+import scala.reflect.io.Path.jfile2path
 
-class InputStep extends ScalaDsl with EN with Matchers with Suite with BeforeAndAfterAll{
+class InputStep extends ScalaDsl with EN with Matchers with Suite {
   private var pathInputDataset: String = _
   private var pathOutputDataset: String = _
 
@@ -32,21 +34,35 @@ class InputStep extends ScalaDsl with EN with Matchers with Suite with BeforeAnd
 
     val listTable = table.asLists().asScala
     val schema = listTable.head.toArray.map(_.toString)
-    val rows = listTable.tail.map(_.toArray().map(_.toString))
-
-    println(currentDirectory)
-    println(listTable)
-    println(schema)
-    println(rows)
+    val lines = listTable.tail.map(_.toArray().map(_.toString))
 
     val out = new BufferedWriter(new FileWriter(currentDirectory + "/" + path))
     val writer = new CSVWriter(out)
-    val listOfRecord = rows.foldLeft(List(schema))((list, x) => list :+ x)
+    val listOfRecord = lines.foldLeft(List(schema))((list, x) => list :+ x)
 
-    val t = collection.mutable.ArrayBuffer(listOfRecord: _*).asJava
+    val result = collection.mutable.ArrayBuffer(listOfRecord: _*).asJava
 
-    writer.writeAll(t)
+    writer.writeAll(result)
     out.close()
+  }
+
+  private def deleteIntegrationDataset(folder: String): Unit = {
+    val listFile = getListOfFilesAndDirectory(s"src/test/resources/integration/dataset/${folder}")
+    listFile.map(file => {
+      if (file.isDirectory) file.deleteRecursively()
+      else file.delete()
+    })
+  }
+
+  Before { scenario: Scenario =>
+    println(s"Starting Scenario with id : ${scenario.getId}")
+  }
+
+  After { scenario: Scenario =>
+    deleteIntegrationDataset("input")
+    deleteIntegrationDataset("output")
+    println(s"Ending Scenario with status : ${scenario.getStatus}")
+    println("Ending Scenario")
   }
 
 }
