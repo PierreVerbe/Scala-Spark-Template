@@ -5,6 +5,8 @@
 * Spark Testing base <br>
 * Netcat windows <br>
 * Log engine
+* Scala fmt
+* Scala style
 
 ## Done
 
