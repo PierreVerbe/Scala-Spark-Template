@@ -29,4 +29,8 @@ class miniDFSClusterSpec extends WordSpec with HDFSCluster with BeforeAndAfterAl
 /* HADOOP_HOME
    PATH
 https://github.com/sakserv/hadoop-mini-clusters
+
+
+
+An exception or error caused a run to abort: org.apache.hadoop.io.nativeio.NativeIO$Windows.access0(Ljava/lang/String;I)Z
     */
