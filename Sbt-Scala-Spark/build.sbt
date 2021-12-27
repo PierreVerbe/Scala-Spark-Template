@@ -2,11 +2,11 @@ ThisBuild / name := "Sbt-Scala-Spark"
 ThisBuild / organization := "com.gitHub"
 ThisBuild / version := "1.0"
 
-ThisBuild / scalaVersion := "2.11.8"
+ThisBuild / scalaVersion := "2.12.8"
 
 // Properties build
-lazy val hadoopVersion = "2.8.1"
-lazy val sparkVersion = "2.2.0"
+lazy val hadoopVersion = "3.1.2"
+lazy val sparkVersion = "2.4.5"
 lazy val scalaTestVersion = "3.0.8"
 lazy val scalaCheckVersion = "1.14.3"
 lazy val scalaMeterVersion = "0.19"
@@ -37,10 +37,12 @@ val cucumber = "io.cucumber" %% "cucumber-scala" % cucumberVersion
 // Benchmarks
 val scalaMeter = "com.storm-enroute" %% "scalameter" % scalaMeterVersion
 
-lazy val commonSettings = Seq(
-  libraryDependencies ++= Seq(hadoopCommon,
+lazy val hadoopMiniClusterSettings = libraryDependencies ++= Seq(hadoopCommon,
     hadoopHdfs,
-    hadoopMiniCluster),
+    hadoopMiniCluster)
+
+lazy val commonSettings = Seq(
+  hadoopMiniClusterSettings,
 
   libraryDependencies ++= Seq(sparkCore % Provided,
     sparkSQl % Provided,
@@ -63,14 +65,20 @@ lazy val root = (project in file("."))
   )
 
 // Spark sub project
-lazy val sparkProject = (project in file("Spark-Sub"))
+lazy val sparkProject = (project in file("Spark"))
   .settings(commonSettings : _*)
   .settings(
-    name := "Spark sub project"
+    name := "Spark project"
+  )
+
+lazy val hadoopMiniClusterProject = (project in file("Hadoop"))
+  .settings(hadoopMiniClusterSettings)
+  .settings(
+    name := "Hadoop MiniCluster project"
   )
 
 // Hello sub project
-lazy val sub = (project in file("Hello-Sub"))
+lazy val helloWorldProject = (project in file("Hello-World"))
   .settings(
-    name := "Hello sub project"
+    name := "Hello World project"
   )
