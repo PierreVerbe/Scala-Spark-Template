@@ -37,13 +37,7 @@ val cucumber = "io.cucumber" %% "cucumber-scala" % cucumberVersion
 // Benchmarks
 val scalaMeter = "com.storm-enroute" %% "scalameter" % scalaMeterVersion
 
-lazy val hadoopMiniClusterSettings = libraryDependencies ++= Seq(hadoopCommon,
-    hadoopHdfs,
-    hadoopMiniCluster)
-
-lazy val commonSettings = Seq(
-  hadoopMiniClusterSettings,
-
+lazy val SparkSettings = Seq(
   libraryDependencies ++= Seq(sparkCore % Provided,
     sparkSQl % Provided,
     sparkStreaming % Provided,
@@ -59,6 +53,10 @@ lazy val commonSettings = Seq(
   libraryDependencies += scalaMeter % Test
 )
 
+lazy val HadoopSettings = libraryDependencies ++= Seq(hadoopCommon,
+  hadoopHdfs,
+  hadoopMiniCluster)
+
 lazy val root = (project in file("."))
   .settings(
     name := "Root Project"
@@ -66,13 +64,14 @@ lazy val root = (project in file("."))
 
 // Spark sub project
 lazy val sparkProject = (project in file("Spark"))
-  .settings(commonSettings : _*)
+  .settings(SparkSettings : _*)
   .settings(
     name := "Spark project"
   )
 
+// Hadoop sub project
 lazy val hadoopMiniClusterProject = (project in file("Hadoop"))
-  .settings(hadoopMiniClusterSettings)
+  .settings(HadoopSettings)
   .settings(
     name := "Hadoop MiniCluster project"
   )
