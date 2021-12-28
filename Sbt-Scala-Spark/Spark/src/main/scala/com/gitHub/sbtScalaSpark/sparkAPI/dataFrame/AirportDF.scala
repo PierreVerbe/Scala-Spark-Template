@@ -12,7 +12,7 @@ object AirportDF {
 
     import sparkSession.implicits._
 
-    val df = sparkSession.read.option("header", "true").csv("Spark-Sub/src/main/resources/dataset/input/AirportRunways.csv")
+    val df = sparkSession.read.option("header", "true").csv("Spark/src/main/resources/dataset/input/AirportRunways.csv")
 
     df.printSchema()
     df.show()
