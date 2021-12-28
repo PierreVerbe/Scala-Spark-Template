@@ -35,55 +35,43 @@ val opencsv = "com.opencsv" % "opencsv" % opencsvVersion
 // Tests
 val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion
 val scalaCheck = "org.scalacheck" %% "scalacheck" % scalaCheckVersion
-val sparkTestingBase = "com.holdenkarau" %% "spark-testing-base" % sparkTestingBaseVersion // Wiki : https://github.com/holdenk/spark-testing-base/wiki , Spark Testing Base -> 3.0.0 does not exist
+val sparkTestingBase = "com.holdenkarau" %% "spark-testing-base" % sparkTestingBaseVersion
 val cucumber = "io.cucumber" %% "cucumber-scala" % cucumberVersion
 
 // Benchmarks
 val scalaMeter = "com.storm-enroute" %% "scalameter" % scalaMeterVersion
 
 lazy val SparkSettings = Seq(
-  libraryDependencies ++= Seq(sparkCore % Provided,
+  libraryDependencies ++= Seq(
+    sparkCore % Provided,
     sparkSQl % Provided,
     sparkStreaming % Provided,
-    sparkHive% Provided),
+    sparkHive % Provided),
   libraryDependencies += jackson,
   libraryDependencies += sparkTestingBase % Test,
-
   libraryDependencies += scalaTest % Test,
   libraryDependencies += scalaCheck % Test,
   libraryDependencies += cucumber % Test,
-
   libraryDependencies += opencsv,
+  libraryDependencies += scalaMeter % Test)
 
-  libraryDependencies += scalaMeter % Test
-)
-
-lazy val HadoopSettings = libraryDependencies ++= Seq(hadoopCommon,
-  hadoopHdfs,
-  hadoopMiniCluster)
+lazy val HadoopSettings = libraryDependencies ++= Seq(hadoopCommon, hadoopHdfs, hadoopMiniCluster)
 
 lazy val root = (project in file("."))
-  .settings(
-    name := "Root Project"
-  )
+  .settings(name := "Root Project")
 
 // Spark sub project
 lazy val sparkProject = (project in file("Spark"))
-  .settings(SparkSettings : _*)
+  .settings(SparkSettings: _*)
   .dependsOn(hadoopMiniClusterProject)
-  .settings(
-    name := "Spark project"
-  )
+  .enablePlugins(ScalastylePlugin)
+  .settings(name := "Spark project")
 
 // Hadoop sub project
 lazy val hadoopMiniClusterProject = (project in file("Hadoop"))
   .settings(HadoopSettings)
-  .settings(
-    name := "Hadoop MiniCluster project"
-  )
+  .settings(name := "Hadoop MiniCluster project")
 
 // Hello sub project
 lazy val helloWorldProject = (project in file("Hello-World"))
-  .settings(
-    name := "Hello World project"
-  )
+  .settings(name := "Hello World project")
