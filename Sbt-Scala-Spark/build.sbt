@@ -4,7 +4,7 @@ ThisBuild / version := "1.0"
 
 ThisBuild / scalaVersion := "2.12.8"
 
-// Properties build
+// Build properties
 lazy val hadoopVersion = "3.1.2"
 lazy val sparkVersion = "2.4.5"
 lazy val jacksonModuleScalaVersion = "2.13.1"
