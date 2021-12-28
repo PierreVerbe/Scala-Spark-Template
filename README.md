@@ -8,8 +8,8 @@
 * Install Simple Build Tool (SBT) <br>
 
 ## Technical stack
-* Scala 2.11.8 <br>
-* Spark 3.0.1 <br>
+* Scala 2.12.8 <br>
+* Spark 2.4.5 <br>
 * Testing : ScalaTest, ScalaCheck, Spark-Testing-Base, Cucumber <br>
 * Benchmarking : ScalaMeter <br>
 
