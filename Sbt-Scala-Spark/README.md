@@ -20,4 +20,8 @@ Scalafmt is a code formatter. <br>
 You can add rules in the ".scalafmt.conf". <br>
 To set up the formatter in IntelliJ you can follow steps in the [documentation](https://scalameta.org/scalafmt/docs/installation.html). <br>
 
+To reformat code :
+* On mac press ⌥ + ⌘ + L
+* On windows Ctrl + Alt + L
+
 Here we use the scalafmt use in the "Apache Spark" project. <br>
