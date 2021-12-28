@@ -21,7 +21,12 @@ object Main {
     df.printSchema()
     df.show()
 
-    df.coalesce(1).write.format("csv").option("header", "true").mode(SaveMode.Overwrite).save(pathOutputDataset)
+    df.coalesce(1)
+      .write
+      .format("csv")
+      .option("header", "true")
+      .mode(SaveMode.Overwrite)
+      .save(pathOutputDataset)
     sparkSession.close()
   }
 
