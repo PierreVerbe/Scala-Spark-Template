@@ -7,6 +7,7 @@ ThisBuild / scalaVersion := "2.12.8"
 // Properties build
 lazy val hadoopVersion = "3.1.2"
 lazy val sparkVersion = "2.4.5"
+lazy val jacksonModuleScalaVersion = "2.13.1"
 lazy val scalaTestVersion = "3.0.8"
 lazy val scalaCheckVersion = "1.14.3"
 lazy val scalaMeterVersion = "0.19"
@@ -25,6 +26,9 @@ val sparkSQl = "org.apache.spark" %% "spark-sql" % sparkVersion
 val sparkStreaming = "org.apache.spark" %% "spark-streaming" % sparkVersion
 val sparkHive = "org.apache.spark" %% "spark-hive" % sparkVersion
 
+// Jackson
+val jackson = "com.fasterxml.jackson.module" %% "jackson-module-scala" % jacksonModuleScalaVersion
+
 // Opencsv
 val opencsv = "com.opencsv" % "opencsv" % opencsvVersion
 
@@ -42,6 +46,7 @@ lazy val SparkSettings = Seq(
     sparkSQl % Provided,
     sparkStreaming % Provided,
     sparkHive% Provided),
+  libraryDependencies += jackson,
   libraryDependencies += sparkTestingBase % Test,
 
   libraryDependencies += scalaTest % Test,
@@ -65,6 +70,7 @@ lazy val root = (project in file("."))
 // Spark sub project
 lazy val sparkProject = (project in file("Spark"))
   .settings(SparkSettings : _*)
+  .dependsOn(hadoopMiniClusterProject)
   .settings(
     name := "Spark project"
   )
