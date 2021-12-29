@@ -7,4 +7,4 @@
     * PATH = path/to/winutils/hadoop-x.x.x/bin
 
 ## HDFS web UI
-You can access the UI [link](http://127.0.0.1:50070)
+You can access the UI [127.0.0.1:50070](127.0.0.1:50070)
