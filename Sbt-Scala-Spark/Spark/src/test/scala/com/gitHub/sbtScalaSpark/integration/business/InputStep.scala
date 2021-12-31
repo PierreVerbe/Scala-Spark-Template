@@ -3,11 +3,12 @@ package com.gitHub.sbtScalaSpark.integration.business
 import com.gitHub.sbtScalaSpark.Main
 import com.gitHub.sbtScalaSpark.integration.business.CucumberTool.getListOfFilesAndDirectory
 import com.opencsv.CSVWriter
+import com.sun.media.jfxmediaimpl.HostUtils.isMacOSX
 import io.cucumber.datatable.DataTable
 import io.cucumber.scala.{EN, ScalaDsl, Scenario}
 import org.scalatest.{Matchers, Suite}
 
-import java.io.{BufferedWriter, FileWriter}
+import java.io.{BufferedWriter, File, FileWriter}
 import scala.collection.JavaConverters._
 import scala.jdk.CollectionConverters.asScalaBufferConverter
 import scala.reflect.io.Path.jfile2path
@@ -23,6 +24,8 @@ class InputStep extends ScalaDsl with EN with Matchers with Suite {
 
   Given("Output CSV file located {string} is") { (path: String) =>
     pathOutputDataset = path
+    val directory = new File(path.split("/").dropRight(1).mkString("/"))
+    directory.mkdirs()
   }
 
   When("I run spark job") { () =>
@@ -32,9 +35,14 @@ class InputStep extends ScalaDsl with EN with Matchers with Suite {
   private def writeInputDatasetToCSV(path: String, table: DataTable): Unit = {
     val currentDirectory = new java.io.File(".").getCanonicalPath
 
+    val directory = new File(path.split("/").dropRight(1).mkString("/"))
     val listTable = table.asLists().asScala
     val schema = listTable.head.toArray.map(_.toString)
     val lines = listTable.tail.map(_.toArray().map(_.toString))
+
+    // Create directories and file
+    directory.mkdirs()
+    new File(currentDirectory + "/" + path)
 
     val out = new BufferedWriter(new FileWriter(currentDirectory + "/" + path))
     val writer = new CSVWriter(out)

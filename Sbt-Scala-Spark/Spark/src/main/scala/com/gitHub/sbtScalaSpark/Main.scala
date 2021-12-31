@@ -27,6 +27,7 @@ object Main {
       .option("header", "true")
       .mode(SaveMode.Overwrite)
       .save(pathOutputDataset)
+
     sparkSession.close()
   }
 

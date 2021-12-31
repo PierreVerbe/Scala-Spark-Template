@@ -5,6 +5,11 @@
 $ sbt clean package
 ```
 
+## Cucumber
+On IntelliJ, you need plugins Scala, Cucumber for Java and Gherkin. <br>
+To run Cucumber test go in the folder test/resources/integration. <br>
+And Click on "Run 'Feature:...'". <br>
+
 ## Scalastyle
 Scalastyle examines your Scala code and indicates potential problems with it. <br>
 You can add checks in the "scalastyle-config.xml" file. <br>
