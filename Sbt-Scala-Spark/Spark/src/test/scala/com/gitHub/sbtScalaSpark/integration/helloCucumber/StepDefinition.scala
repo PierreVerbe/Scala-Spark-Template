@@ -4,7 +4,7 @@ import io.cucumber.scala.{EN, ScalaDsl}
 import org.scalatest.Matchers
 
 object IsItFriday {
-  def isItFriday(today: String): String = if ("Friday".equals(today) )"TGIF" else "Nope"
+  def isItFriday(today: String): String = if ("Friday".equals(today)) "TGIF" else "Nope"
 }
 
 class StepDefinition extends ScalaDsl with EN with Matchers {

@@ -5,11 +5,11 @@ Feature: Is the project working properly ?
       | FIRST NAME | LAST NAME | GENDER | NATIONALITY | AGE | IS_ALIVE |
       | Daffy      | Duck      | Male   | USA         | 20  | yes      |
 
-    And Output CSV file located "src/test/resources/integration/dataset/output/result_with_one_row" is
+    And Output CSV file located "src/test/resources/integration/dataset/output/result_with_one_row.csv" is
 
     When I run spark job
 
-    Then Output dataset located "src/test/resources/integration/dataset/output/result_with_one_row" should contain:
+    Then Output dataset located "src/test/resources/integration/dataset/output/result_with_one_row.csv" should contain:
       | FIRST NAME | LAST NAME | GENDER | NATIONALITY | AGE | IS_ALIVE |
       | Daffy      | Duck      | Male   | USA         | 20  | yes      |
 
@@ -22,11 +22,11 @@ Feature: Is the project working properly ?
       | Donald     | Duck      | Male   | USA         | 27  | no       |
       | Daisy      | Duck      | Female | USA         | 28  | yes      |
 
-    And Output CSV file located "src/test/resources/integration/dataset/output/result_with_five_row" is
+    And Output CSV file located "src/test/resources/integration/dataset/output/result_with_five_row.csv" is
 
     When I run spark job
 
-    Then Output dataset located "src/test/resources/integration/dataset/output/result_with_five_row" should contain:
+    Then Output dataset located "src/test/resources/integration/dataset/output/result_with_five_row.csv" should contain:
       | FIRST NAME | LAST NAME | GENDER | NATIONALITY | AGE | IS_ALIVE |
       | Daffy      | Duck      | Male   | USA         | 20  | yes      |
       | Minnie     | Mouse     | Female | USA         | 25  | yes      |
@@ -47,11 +47,11 @@ Feature: Is the project working properly ?
       | Daisy      | Duck      | Female | USA         | 28  | yes      |
       | Lisa       | Simpson   | Female | USA         | 12  | yes      |
 
-    And Output CSV file located "src/test/resources/integration/dataset/output/result_with_ten_row" is
+    And Output CSV file located "src/test/resources/integration/dataset/output/result_with_ten_row.csv" is
 
     When I run spark job
 
-    Then Output dataset located "src/test/resources/integration/dataset/output/result_with_ten_row" should contain:
+    Then Output dataset located "src/test/resources/integration/dataset/output/result_with_ten_row.csv" should contain:
       | FIRST NAME | LAST NAME | GENDER | NATIONALITY | AGE | IS_ALIVE |
       | Daffy      | Duck      | Male   | USA         | 20  | yes      |
       | Homer      | Simpson   | Male   | USA         | 37  | yes      |
